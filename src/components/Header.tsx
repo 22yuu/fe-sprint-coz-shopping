@@ -1,6 +1,6 @@
-import logo from '../icons/logo.svg';
 import React from 'react';
-import Hambuger from './Hambuger';
+import Hambuger from '../assets/icons/Hambuger';
+import Logo from '../assets/icons/Logo';
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
       className="w-full h-20 flex items-center justify-between px-20 py-4 shadow-lg sticky"
     >
       <section data-testid="left" className="flex hover:cursor-pointer">
-        <img id="img__logo" src={logo} alt="logo" className="w-14 h-8 mr-2" />
+        <Logo />
         <span className="text-2xl font-bold">COZ Shopping</span>
       </section>
       <section data-testid="right">
