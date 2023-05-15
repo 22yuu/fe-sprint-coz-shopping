@@ -1,4 +1,4 @@
-export default class ProductsAPI {
+export default class ProductAPI {
   constructor(apiClient) {
     this.apiClient = apiClient;
   }
