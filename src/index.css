@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dropDownMenu {
+  position: absolute;
+  top: 4.5rem;
+  right: 4rem;
+  width: 200px;
+  border-radius: 15px;
+  background-color: white;
+  /* border: 1px solid gray; */
+  /* padding: 0.75rem 0.625rem; */
+  /* box-shadow: 0px 0px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.dropDownMenu > ul::after {
+  content: '';
+  position: absolute;
+  top: -0.6rem;
+  right: 2rem;
+  width: 18px;
+  height: 18px;
+  transform: rotate(45deg);
+  background-color: white;
+  /* border-left: 1px solid #222;
+  border-top: 1px solid #222; */
+  box-shadow: -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: -1px -1px 5px 1px rgba(0, 0, 0, 0.1);
+  z-index: -1;
+}
+
+.line {
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
