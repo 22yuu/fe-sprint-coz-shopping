@@ -1,0 +1,122 @@
+[
+  {
+    "id": 80,
+    "type": "Exhibition",
+    "title": "오감 발달에 최고",
+    "sub_title": "아이 장난감 BEST",
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.unsplash.com/photo-1575364289437-fb1479d52732?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 71,
+    "type": "Exhibition",
+    "title": "인생샷 핫플레이스",
+    "sub_title": "입장권 구매시 기념품 증정",
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.pexels.com/photos/3862601/pexels-photo-3862601.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 66,
+    "type": "Category",
+    "title": "캠핑",
+    "sub_title": null,
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 81,
+    "type": "Category",
+    "title": "인테리어",
+    "sub_title": null,
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.unsplash.com/photo-1564078516393-cf04bd966897?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aW50ZXJpb3J8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 57,
+    "type": "Brand",
+    "title": null,
+    "sub_title": null,
+    "brand_name": "구찌",
+    "price": null,
+    "discountPercentage": null,
+    "image_url": null,
+    "brand_image_url": "https://images.unsplash.com/photo-1560519622-7229023b9c86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80",
+    "follower": 8094
+  },
+  {
+    "id": 77,
+    "type": "Category",
+    "title": "나들이",
+    "sub_title": null,
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.unsplash.com/photo-1567708233986-87de01b33b62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 90,
+    "type": "Exhibition",
+    "title": "맥북 모음전",
+    "sub_title": "애플 케어 추가 할인",
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2020&q=80",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 18,
+    "type": "Category",
+    "title": "향수",
+    "sub_title": null,
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.unsplash.com/photo-1630573133526-8d090e0269af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 62,
+    "type": "Category",
+    "title": "보드게임",
+    "sub_title": null,
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.unsplash.com/photo-1632501641765-e568d28b0015?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
+    "brand_image_url": null,
+    "follower": null
+  },
+  {
+    "id": 47,
+    "type": "Exhibition",
+    "title": "UP TO 23% SALE",
+    "sub_title": "다시 없는 역대급 혜택",
+    "brand_name": null,
+    "price": null,
+    "discountPercentage": null,
+    "image_url": "https://images.unsplash.com/photo-1550226891-ef816aed4a98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    "brand_image_url": null,
+    "follower": null
+  }
+]
