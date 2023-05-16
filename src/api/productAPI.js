@@ -4,7 +4,7 @@ export default class ProductAPI {
   }
 
   async getAllProducts() {
-    return this.apiClient.allProducts();
+    return this.apiClient.allProducts().then((res) => res.data);
   }
 
   async getBy(count) {
