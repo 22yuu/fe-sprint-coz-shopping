@@ -26,7 +26,7 @@ export default function Header() {
         <button className="w-8 h-8" onClick={handleClickHambuger}>
           <img src={hambuger} alt="hambuger-btn" />
         </button>
-        {openDropDown && <DropDownMenu />}
+        {openDropDown && <DropDownMenu onClick={handleClickHambuger} />}
       </section>
     </section>
   );
