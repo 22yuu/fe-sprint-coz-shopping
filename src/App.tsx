@@ -1,21 +1,47 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { ProductProvider } from './context/ProductContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Outlet } from 'react-router-dom';
+import Modal from './components/Modal';
 
 export default function App() {
   const queryClient = new QueryClient();
+  const [isOpenModal, setOpenModal] = useState(false);
+  const [imgSrc, setImgSrc] = useState('');
+  const [isModalBookmark, setModalBookmark] = useState(false);
+  const [modalText, setModalText] = useState('');
+
+  const handleModal = () => {
+    setOpenModal(!isOpenModal);
+  };
+
+  const handleModalBookmark = () => {
+    setModalBookmark(!isModalBookmark);
+  };
+
   return (
     <>
       <Header />
       <ProductProvider>
         <QueryClientProvider client={queryClient}>
-          <Outlet />
+          <Outlet
+            context={{ handleModal, setImgSrc, setModalBookmark, setModalText }}
+          />
         </QueryClientProvider>
       </ProductProvider>
       <Footer />
+
+      {isOpenModal && (
+        <Modal
+          imgSrc={imgSrc}
+          handleModal={handleModal}
+          handleModalBookmark={handleModalBookmark}
+          isModalBookmark={isModalBookmark}
+          modalText={modalText}
+        />
+      )}
     </>
   );
 }
