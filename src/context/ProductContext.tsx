@@ -10,7 +10,7 @@ export const ProductApiContext = createContext();
 
 const fake = new FakeProductClient();
 const client = new ProductClient();
-const productApi = new ProductAPI(client);
+const productApi = new ProductAPI(fake);
 
 export function ProductProvider({ children }: ProviderProps) {
   return (
