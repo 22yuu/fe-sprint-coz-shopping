@@ -7,13 +7,15 @@ export default function Main() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log(productApi.getAllProducts().then((res) => setProducts(res)));
+    // productApi.getAllProducts().then((res) => setProducts(res));
+    // productApi.getBy(4).then((res) => setProducts(res));
+    productApi.getBy(10).then((res) => setProducts(res));
   }, []);
   return (
     <main className="flex-1">
       <ul>
         {products.map((product) => (
-          <li>{product.title}</li>
+          <li key={product.id}>{product.type}</li>
         ))}
       </ul>
     </main>

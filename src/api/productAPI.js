@@ -12,6 +12,6 @@ export default class ProductAPI {
       count: count,
     };
 
-    return this.apiClient.productsGetBy(params);
+    return this.apiClient.productsGetBy(params).then((res) => res.data);
   }
 }
