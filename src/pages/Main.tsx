@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProductApi } from '../context/ProductContext';
-import ItemCard from '../components/ItemCard';
+import ItemList from '../components/ItemList';
 
 export default function Main() {
   const { productApi } = useProductApi();
@@ -14,11 +14,8 @@ export default function Main() {
   }, []);
   return (
     <main className="flex-1 flex flex-col items-center justify-center">
-      <ul className="flex gap-4">
-        {products.map((product) => (
-          <ItemCard key={product.id} item={product} />
-        ))}
-      </ul>
+      <ItemList title="상품 리스트" products={products} />
+      <ItemList title="북마크 리스트" products={products} />
     </main>
   );
 }
