@@ -2,12 +2,10 @@ import { useState } from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { ProductProvider } from './context/ProductContext';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { Outlet } from 'react-router-dom';
 import Modal from './components/Modal';
 
 export default function App() {
-  const queryClient = new QueryClient();
   const [isOpenModal, setOpenModal] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
   const [isModalBookmark, setModalBookmark] = useState(false);
@@ -25,11 +23,9 @@ export default function App() {
     <>
       <Header />
       <ProductProvider>
-        <QueryClientProvider client={queryClient}>
-          <Outlet
-            context={{ handleModal, setImgSrc, setModalBookmark, setModalText }}
-          />
-        </QueryClientProvider>
+        <Outlet
+          context={{ handleModal, setImgSrc, setModalBookmark, setModalText }}
+        />
       </ProductProvider>
       <Footer />
 

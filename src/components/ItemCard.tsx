@@ -26,7 +26,7 @@ export default function ItemCard({ item }) {
   };
 
   return (
-    <li className="w-1/4 h-64" onClick={onClickItemCard}>
+    <li className="w-1/4 h-64 hover:cursor-pointer" onClick={onClickItemCard}>
       <div id="imgSection" className="relative w-full h-4/5">
         <img src={image} className="w-full h-full" />
         <button className="absolute bottom-1 right-1" onClick={handleBookmark}>

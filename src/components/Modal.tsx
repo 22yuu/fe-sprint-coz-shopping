@@ -10,8 +10,14 @@ export default function Modal({
   modalText,
 }) {
   return (
-    <div className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-white/50">
-      <div className="relative w-3/5 h-1/2 z-50">
+    <div
+      className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-white/50"
+      onClick={handleModal}
+    >
+      <div
+        className="relative w-3/5 h-1/2 z-50"
+        onClick={(e) => e.stopPropagation()}
+      >
         <img
           className="w-full h-full rounded-2xl"
           src={imgSrc}
