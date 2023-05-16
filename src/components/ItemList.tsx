@@ -1,13 +1,13 @@
 import React from 'react';
 import ItemCard from './ItemCard';
 
-export default function ItemList({ title, products }) {
+export default function ItemList({ title, items }) {
   return (
     <section>
       {title && <h2>{title}</h2>}
       <ul className="flex gap-4">
-        {products.map((product) => (
-          <ItemCard key={product.id} item={product} />
+        {items.map((item) => (
+          <ItemCard key={item.id} item={item} />
         ))}
       </ul>
     </section>

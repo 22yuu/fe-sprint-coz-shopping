@@ -14,8 +14,8 @@ export default function Main() {
   }, []);
   return (
     <main className="flex-1 flex flex-col items-center justify-center">
-      <ItemList title="상품 리스트" products={products} />
-      <ItemList title="북마크 리스트" products={products} />
+      <ItemList title="상품 리스트" items={products} />
+      <ItemList title="북마크 리스트" items={products} />
     </main>
   );
 }
