@@ -1,6 +1,6 @@
 import React from 'react';
-import bookmark from '../assets/bookmark.svg';
-import product from '../assets/product.svg';
+import bookmark from '../assets/bookmark-icon.svg';
+import product from '../assets/product-icon.svg';
 import { Link } from 'react-router-dom';
 
 export default function DropDownMenu({ onClick }) {

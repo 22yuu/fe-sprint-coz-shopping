@@ -12,7 +12,6 @@ export default class ProductClient {
   }
 
   async productsGetBy(params) {
-    console.log(params);
     return this.httpClient.get('products', { params });
   }
 }

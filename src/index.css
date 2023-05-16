@@ -15,6 +15,11 @@ body {
   flex-direction: column;
 }
 
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .dropDownMenu {
   position: absolute;
   top: 4.5rem;
