@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useProductApi } from '../context/ProductContext';
+import ItemCard from '../components/ItemCard';
 
 export default function Main() {
   const { productApi } = useProductApi();
@@ -15,7 +16,7 @@ export default function Main() {
     <main className="flex-1">
       <ul>
         {products.map((product) => (
-          <li key={product.id}>{product.type}</li>
+          <ItemCard key={product.id} item={product} />
         ))}
       </ul>
     </main>
