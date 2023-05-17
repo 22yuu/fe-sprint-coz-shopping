@@ -1,43 +1,33 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+
 import Footer from './components/Footer';
 import Header from './components/Header';
-import { ProductProvider } from './context/ProductContext';
-import { Outlet } from 'react-router-dom';
 import Modal from './components/Modal';
 
-export default function App() {
+export default function App(props) {
   const [isOpenModal, setOpenModal] = useState(false);
-  const [imgSrc, setImgSrc] = useState('');
-  const [isModalBookmark, setModalBookmark] = useState(false);
-  const [modalText, setModalText] = useState('');
+  const [modalItem, setModalItem] = useState({});
 
   const handleModal = () => {
     setOpenModal(!isOpenModal);
   };
 
-  const handleModalBookmark = () => {
-    setModalBookmark(!isModalBookmark);
-  };
-
   return (
     <>
       <Header />
-      <ProductProvider>
+      {props.outlet ? (
+        props.outlet
+      ) : (
         <Outlet
-          context={{ handleModal, setImgSrc, setModalBookmark, setModalText }}
-        />
-      </ProductProvider>
-      <Footer />
-
-      {isOpenModal && (
-        <Modal
-          imgSrc={imgSrc}
-          handleModal={handleModal}
-          handleModalBookmark={handleModalBookmark}
-          isModalBookmark={isModalBookmark}
-          modalText={modalText}
+          context={{
+            handleModal,
+            setModalItem,
+          }}
         />
       )}
+      <Footer />
+      {isOpenModal && <Modal item={modalItem} handleModal={handleModal} />}
     </>
   );
 }
