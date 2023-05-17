@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import types from '../constants/types';
 import bookmarkOff from '../assets/bookmark-off.svg';
 import bookmarkOn from '../assets/bookmark-on.svg';
@@ -10,13 +11,22 @@ export default function ItemCard({ item }) {
     getTypeData(item);
 
   const [isBookmark, setIsBookmark] = useState(false);
+  const { handleModal, setImgSrc, setModalBookmark, setModalText } =
+    useOutletContext();
 
   const handleBookmark = () => {
     setIsBookmark(!isBookmark);
   };
 
+  const onClickItemCard = () => {
+    handleModal();
+    setImgSrc(image);
+    setModalText(title);
+    setModalBookmark(isBookmark);
+  };
+
   return (
-    <li className="w-1/4 h-64">
+    <li className="w-1/4 h-64 hover:cursor-pointer" onClick={onClickItemCard}>
       <div id="imgSection" className="relative w-full h-4/5">
         <img src={image} className="w-full h-full" />
         <button className="absolute bottom-1 right-1" onClick={handleBookmark}>
