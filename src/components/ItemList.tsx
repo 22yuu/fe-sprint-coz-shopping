@@ -1,4 +1,3 @@
-import React from 'react';
 import ItemCard from './ItemCard';
 
 export default function ItemList({ title, items }) {
@@ -6,9 +5,9 @@ export default function ItemList({ title, items }) {
     <section className="w-full mb-10">
       {title && <h2>{title}</h2>}
       <ul className="flex gap-4">
-        {items.map((item) => (
-          <ItemCard key={item.id} item={item} />
-        ))}
+        {items.length > 0
+          ? items.map((item) => <ItemCard key={item.id} item={item} />)
+          : '텅'}
       </ul>
     </section>
   );

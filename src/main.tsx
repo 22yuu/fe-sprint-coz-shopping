@@ -1,18 +1,20 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import App from './App.tsx';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Main from './pages/Main.tsx';
-import ProductList from './pages/ProductList.tsx';
+import { BookmarkProvider } from './context/BookmarkContext';
+import { ProductProvider } from './context/ProductContext';
 import Bookmark from './pages/Bookmark.tsx';
+import Main from './pages/Main.tsx';
 import NotFound from './pages/NotFound.tsx';
+import ProductList from './pages/ProductList.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <NotFound />,
+    errorElement: <App outlet={<NotFound />} />,
     children: [
       { index: true, element: <Main /> },
       { path: 'productlist', element: <ProductList /> },
@@ -22,7 +24,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <ProductProvider>
+    <BookmarkProvider>
+      <RouterProvider router={router} />
+    </BookmarkProvider>
+  </ProductProvider>
 );

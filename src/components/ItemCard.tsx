@@ -1,34 +1,57 @@
-import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
+import { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import types from '../constants/types';
+
 import bookmarkOff from '../assets/bookmark-off.svg';
 import bookmarkOn from '../assets/bookmark-on.svg';
-
-const { Brand, Product, Category, Exhibition } = types;
+import { useBookmark } from '../context/BookmarkContext';
+import getTypeData from '../utils/getTypeData';
 
 export default function ItemCard({ item }) {
   const { title, subTitle, image, price, discount, follower } =
     getTypeData(item);
 
-  const [isBookmark, setIsBookmark] = useState(false);
-  const { handleModal, setImgSrc, setModalBookmark, setModalText } =
-    useOutletContext();
+  const { bookmarkList, handleAddBookmark, handleDeleteBookmark } =
+    useBookmark();
+
+  const [isBookmark, setIsBookmark] = useState(
+    bookmarkList[item.id] !== undefined
+  );
+
+  const { handleModal, setModalItem } = useOutletContext();
 
   const handleBookmark = () => {
-    setIsBookmark(!isBookmark);
+    // add bookmark
+    if (!isBookmark) {
+      setIsBookmark((prev) => !prev);
+      handleAddBookmark({
+        ...bookmarkList,
+        [item.id]: {
+          ...item,
+          bookmarkId: nanoid(),
+        },
+      });
+    }
+    // delete bookmark
+    else {
+      handleDeleteBookmark(item);
+      setIsBookmark((prev) => !prev);
+    }
   };
 
   const onClickItemCard = () => {
     handleModal();
-    setImgSrc(image);
-    setModalText(title);
-    setModalBookmark(isBookmark);
+    setModalItem(item);
   };
 
+  useEffect(() => {
+    setIsBookmark(bookmarkList[item.id] !== undefined);
+  }, [bookmarkList]);
+
   return (
-    <li className="w-1/4 h-64 hover:cursor-pointer" onClick={onClickItemCard}>
+    <li className="w-1/4 h-64 hover:cursor-pointer">
       <div id="imgSection" className="relative w-full h-4/5">
-        <img src={image} className="w-full h-full" />
+        <img src={image} className="w-full h-full" onClick={onClickItemCard} />
         <button className="absolute bottom-1 right-1" onClick={handleBookmark}>
           <img src={isBookmark ? bookmarkOn : bookmarkOff} />
         </button>
@@ -61,41 +84,4 @@ export default function ItemCard({ item }) {
       </div>
     </li>
   );
-}
-
-function getTypeData(item) {
-  let obj = {};
-
-  switch (item.type) {
-    case Brand:
-      obj = {
-        title: item.brand_name,
-        image: item.brand_image_url,
-        follower: item.follower,
-      };
-      break;
-    case Product:
-      obj = {
-        title: item.title,
-        image: item.image_url,
-        price: item.price,
-        discount: item.discountPercentage,
-      };
-      break;
-    case Category:
-      obj = {
-        title: `# ${item.title}`,
-        image: item.image_url,
-      };
-      break;
-    case Exhibition:
-      obj = {
-        title: item.title,
-        subTitle: item.sub_title,
-        image: item.image_url,
-      };
-      break;
-  }
-
-  return obj;
 }

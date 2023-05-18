@@ -1,14 +1,42 @@
+import { useState } from 'react';
+import { nanoid } from 'nanoid';
+import { useBookmark } from '../context/BookmarkContext';
+import getTypeData from '../utils/getTypeData';
 import bookmarkOff from '../assets/bookmark-off.svg';
 import bookmarkOn from '../assets/bookmark-on.svg';
 import close from '../assets/close.svg';
 
-export default function Modal({
-  imgSrc,
-  handleModal,
-  handleModalBookmark,
-  isModalBookmark,
-  modalText,
-}) {
+export default function Modal({ item, handleModal }) {
+  const { bookmarkList, handleAddBookmark, handleDeleteBookmark } =
+    useBookmark();
+
+  const { title, image } = getTypeData(item);
+
+  const [isModalBookmark, setModalBookmark] = useState(
+    bookmarkList[item.id] !== undefined
+  );
+
+  const handleModalBookmark = () => {
+    console.log('clicked!!!');
+    if (!isModalBookmark) {
+      const bookmarkSavedTime = new Date().getSeconds();
+      // console.log(bookmarkSavedTime);
+
+      setModalBookmark((prev) => !prev);
+      handleAddBookmark({
+        ...bookmarkList,
+        [item.id]: {
+          ...item,
+          bookmarkId: nanoid(),
+          time: bookmarkSavedTime,
+        },
+      });
+    } else {
+      handleDeleteBookmark(item);
+      setModalBookmark((prev) => !prev);
+    }
+  };
+
   return (
     <div
       className="fixed top-0 left-0 flex items-center justify-center w-full h-full bg-white/50"
@@ -20,7 +48,7 @@ export default function Modal({
       >
         <img
           className="w-full h-full rounded-2xl"
-          src={imgSrc}
+          src={image}
           alt="modal image"
         />
         <button
@@ -33,7 +61,7 @@ export default function Modal({
           <button onClick={handleModalBookmark}>
             <img src={isModalBookmark ? bookmarkOn : bookmarkOff} />
           </button>
-          <h2 className="text-white">{modalText}</h2>
+          <h2 className="text-white">{title}</h2>
         </div>
       </div>
     </div>
