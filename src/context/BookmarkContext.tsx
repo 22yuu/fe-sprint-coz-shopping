@@ -1,42 +1,28 @@
 import { useContext, createContext, useEffect, useState } from 'react';
-import Toast from '../components/Toast';
 import ToastContainer from '../components/ToastContainer';
+import {
+  readBookmarkFromLocalStorage,
+  setBookmarkLocalStorage,
+} from '../utils/storageUtil';
 
 export const BookmarkContext = createContext();
 
 export function BookmarkProvider({ children }) {
-  const [bookmarkList, setBookmarkList] = useState({});
+  const [bookmarkList, setBookmarkList] = useState(() =>
+    readBookmarkFromLocalStorage()
+  );
   const [toasts, setToasts] = useState([]);
 
   const handleAddBookmark = (item) => {
-    localStorage.setItem('bookmarkList', JSON.stringify(item));
-    setBookmarkList({ ...item });
+    setBookmarkLocalStorage('bookmarkList', item, setBookmarkList);
     setToasts([...toasts, { id: item.bookmarkId, isBookmarked: true }]);
   };
 
   const handleDeleteBookmark = (item) => {
-    for (let key in bookmarkList) {
-      if (key == item.id) {
-        delete bookmarkList[key];
-        break;
-      }
-    }
-
-    // console.log(bookmarkList);
-    localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
-    setBookmarkList({ ...bookmarkList });
+    delete bookmarkList[item.id];
+    setBookmarkLocalStorage('bookmarkList', bookmarkList, setBookmarkList);
     setToasts([...toasts, { id: item.bookmarkId, isBookmarked: false }]);
   };
-
-  useEffect(() => {
-    if ('bookmarkList' in localStorage) {
-      const list = JSON.parse(localStorage.bookmarkList);
-      setBookmarkList(list);
-    } else {
-      localStorage.setItem('bookmarkList', '{}');
-    }
-    return;
-  }, []);
 
   return (
     <BookmarkContext.Provider
