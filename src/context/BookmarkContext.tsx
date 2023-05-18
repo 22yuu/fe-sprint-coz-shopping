@@ -1,13 +1,18 @@
 import { useContext, createContext, useEffect, useState } from 'react';
+import Toast from '../components/Toast';
 
 export const BookmarkContext = createContext();
 
 export function BookmarkProvider({ children }) {
   const [bookmarkList, setBookmarkList] = useState({});
+  const [toast, setToast] = useState(false);
+  const [isBookmark, setToastBookmark] = useState(false);
 
   const handleAddBookmark = (item) => {
     localStorage.setItem('bookmarkList', JSON.stringify(item));
     setBookmarkList({ ...item });
+    setToastBookmark(!isBookmark);
+    setToast(true);
   };
 
   const handleDeleteBookmark = (item) => {
@@ -21,6 +26,12 @@ export function BookmarkProvider({ children }) {
     // console.log(bookmarkList);
     localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
     setBookmarkList({ ...bookmarkList });
+    setToastBookmark(!isBookmark);
+    setToast(true);
+  };
+
+  const handleShowToast = () => {
+    setToast(!toast);
   };
 
   useEffect(() => {
@@ -35,9 +46,15 @@ export function BookmarkProvider({ children }) {
 
   return (
     <BookmarkContext.Provider
-      value={{ bookmarkList, handleAddBookmark, handleDeleteBookmark }}
+      value={{
+        bookmarkList,
+        handleAddBookmark,
+        handleDeleteBookmark,
+        handleShowToast,
+      }}
     >
       {children}
+      {toast && <Toast state={isBookmark} setToastState={setToast} />}
     </BookmarkContext.Provider>
   );
 }
