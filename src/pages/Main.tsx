@@ -11,6 +11,7 @@ export default function Main() {
   const { bookmarkList } = useBookmark();
 
   useEffect(() => {
+    // productApi.getAllProducts().then((res) => setProducts(res));
     productApi.getBy(itemCounts.defaultCount).then((res) => setProducts(res));
   }, []);
 
