@@ -1,18 +1,17 @@
 import { useContext, createContext, useEffect, useState } from 'react';
 import Toast from '../components/Toast';
+import ToastContainer from '../components/ToastContainer';
 
 export const BookmarkContext = createContext();
 
 export function BookmarkProvider({ children }) {
   const [bookmarkList, setBookmarkList] = useState({});
-  const [toast, setToast] = useState(false);
-  const [isBookmark, setToastBookmark] = useState(false);
+  const [toasts, setToasts] = useState([]);
 
   const handleAddBookmark = (item) => {
     localStorage.setItem('bookmarkList', JSON.stringify(item));
     setBookmarkList({ ...item });
-    setToastBookmark(!isBookmark);
-    setToast(true);
+    setToasts([...toasts, { id: item.bookmarkId, isBookmarked: true }]);
   };
 
   const handleDeleteBookmark = (item) => {
@@ -26,12 +25,7 @@ export function BookmarkProvider({ children }) {
     // console.log(bookmarkList);
     localStorage.setItem('bookmarkList', JSON.stringify(bookmarkList));
     setBookmarkList({ ...bookmarkList });
-    setToastBookmark(!isBookmark);
-    setToast(true);
-  };
-
-  const handleShowToast = () => {
-    setToast(!toast);
+    setToasts([...toasts, { id: item.bookmarkId, isBookmarked: false }]);
   };
 
   useEffect(() => {
@@ -50,11 +44,10 @@ export function BookmarkProvider({ children }) {
         bookmarkList,
         handleAddBookmark,
         handleDeleteBookmark,
-        handleShowToast,
       }}
     >
       {children}
-      {toast && <Toast state={isBookmark} setToastState={setToast} />}
+      <ToastContainer time={1000} toasts={toasts} setToastState={setToasts} />
     </BookmarkContext.Provider>
   );
 }
