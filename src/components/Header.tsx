@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <section
       data-testid="header-wrapper"
-      className="w-full h-20 flex items-center justify-between px-20 py-4 shadow-lg sticky"
+      className="w-full h-20 flex items-center justify-between px-20 py-4 shadow-lg sticky mb-6"
     >
       <Link to="/">
         <section data-testid="left" className="flex">

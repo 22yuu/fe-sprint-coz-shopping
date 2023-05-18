@@ -10,18 +10,21 @@ import Main from './pages/Main.tsx';
 import NotFound from './pages/NotFound.tsx';
 import ProductList from './pages/ProductList.tsx';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    errorElement: <App outlet={<NotFound />} />,
-    children: [
-      { index: true, element: <Main /> },
-      { path: 'productlist', element: <ProductList /> },
-      { path: 'bookmark', element: <Bookmark /> },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />,
+      errorElement: <App outlet={<NotFound />} />,
+      children: [
+        { index: true, element: <Main /> },
+        { path: 'productlist', element: <ProductList /> },
+        { path: 'bookmark', element: <Bookmark /> },
+      ],
+    },
+  ],
+  { basename: `${process.env.PUBLIC_URL}` }
+);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ProductProvider>
