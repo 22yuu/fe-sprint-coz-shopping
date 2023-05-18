@@ -49,9 +49,13 @@ export default function ItemCard({ item }) {
   }, [bookmarkList]);
 
   return (
-    <li className="w-1/4 h-64 hover:cursor-pointer">
+    <li className="flex flex-col gap-1 m-1 h-64 hover:cursor-pointer">
       <div id="imgSection" className="relative w-full h-4/5">
-        <img src={image} className="w-full h-full" onClick={onClickItemCard} />
+        <img
+          src={image}
+          className="w-full h-full rounded-2xl"
+          onClick={onClickItemCard}
+        />
         <button className="absolute bottom-1 right-1" onClick={handleBookmark}>
           <img src={isBookmark ? bookmarkOn : bookmarkOff} />
         </button>
