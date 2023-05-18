@@ -3,7 +3,7 @@ import ItemCard from './ItemCard';
 import empty from '../assets/empty.png';
 import types from '../constants/types';
 
-export default function ItemList({ filter, title, items }) {
+export default function ItemList({ title, filter, items }) {
   const filteredItems = getFilteredItems(filter, items);
   // console.log(filteredItems);
 
