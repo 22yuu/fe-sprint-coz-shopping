@@ -3,23 +3,14 @@ import { useState, useEffect } from 'react';
 import Filter from '../components/Filter';
 import ItemList from '../components/ItemList';
 import { useProductApi } from '../context/ProductContext';
-import types from '../constants/types';
-
-const { All, Brand, Category, Exhibition, Product } = types;
-const filters = [All, Brand, Category, Exhibition, Product];
+import { useOutletContext } from 'react-router-dom';
 
 export default function ProductList() {
   const { productApi } = useProductApi();
   const [products, setProducts] = useState([]);
-  const [filter, setFilter] = useState(filters[0]);
-
-  const handleChangeFilter = (type) => {
-    console.log(type);
-    setFilter(type);
-  };
+  const { filter, handleChangeFilter } = useOutletContext();
 
   useEffect(() => {
-    // productApi.getAllProducts().then((res) => setProducts([...res]);
     productApi.getAllProducts().then((res) => setProducts(res));
   }, []);
 
