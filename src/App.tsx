@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Modal from './components/Modal';
 import types from './constants/types';
-import Toast from './components/Toast';
 
 const { All, Brand, Category, Exhibition, Product } = types;
 const filters = [All, Brand, Category, Exhibition, Product];
@@ -20,7 +19,7 @@ export default function App(props) {
     setOpenModal(!isOpenModal);
   };
 
-  const handleChangeFilter = (type) => {
+  const handleChangeFilter = (type: string) => {
     setFilter(type);
   };
 

@@ -1,10 +1,11 @@
-import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { useBookmark } from '../context/BookmarkContext';
-import getTypeData from '../utils/getTypeData';
+import { useState } from 'react';
+
 import bookmarkOff from '../assets/bookmark-off.svg';
 import bookmarkOn from '../assets/bookmark-on.svg';
 import close from '../assets/close.svg';
+import { useBookmark } from '../context/BookmarkContext';
+import getTypeData from '../utils/getTypeData';
 
 export default function Modal({ item, handleModal }) {
   const { bookmarkList, handleAddBookmark, handleDeleteBookmark } =

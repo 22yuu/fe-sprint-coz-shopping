@@ -1,7 +1,11 @@
 import bookmarkOff from '../assets/bookmark-off.svg';
 import bookmarkOn from '../assets/bookmark-on.svg';
 
-export default function Toast({ state }) {
+type Props = {
+  state: boolean;
+};
+
+export default function Toast({ state }: Props) {
   return (
     <div className="flex justify-center items-center font-bold text-center w-74 h-10 p-4 border rounded-xl my-1">
       <img

@@ -1,9 +1,13 @@
-import React from 'react';
-import bookmark from '../assets/bookmark-icon.svg';
-import product from '../assets/product-icon.svg';
 import { Link } from 'react-router-dom';
 
-export default function DropDownMenu({ onClick }) {
+import bookmark from '../assets/bookmark-icon.svg';
+import product from '../assets/product-icon.svg';
+
+type Props = {
+  onClick: () => void;
+};
+
+export default function DropDownMenu({ onClick }: Props) {
   return (
     <div className="flex flex-col dropDownMenu">
       <ul className="flex flex-col">
