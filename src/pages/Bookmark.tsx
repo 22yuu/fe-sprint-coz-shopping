@@ -1,7 +1,7 @@
+import { useOutletContext } from 'react-router-dom';
+
 import Filter from '../components/Filter';
 import ItemList from '../components/ItemList';
-
-import { useOutletContext } from 'react-router-dom';
 import { useBookmark } from '../context/BookmarkContext';
 
 export default function Bookmark() {

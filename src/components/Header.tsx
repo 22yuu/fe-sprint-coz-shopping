@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import hambuger from '../assets/hambuger.svg';
 import logo from '../assets/logo.svg';
+
 import DropDownMenu from './DropDownMenu';
 
 export default function Header() {
-  const [openDropDown, setOpenDropDown] = useState(false);
+  const [openDropDown, setOpenDropDown] = useState<boolean>(false);
 
   const handleClickHambuger = () => {
     setOpenDropDown(!openDropDown);

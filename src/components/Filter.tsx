@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactElement } from 'react';
 
 import filterAll from '../assets/filter-all.png';
 import filterBrand from '../assets/filter-brand.png';
@@ -18,7 +18,13 @@ const mapFilter = [
   { filter: Exhibition, text: '기획전', img: filterExhibition },
   { filter: Brand, text: '브랜드', img: filterBrand },
 ];
-export default function Filter({ filter, onChangeFilter }) {
+
+type Props = {
+  filter: string;
+  onChangeFilter: ReactElement;
+};
+
+export default function Filter({ filter, onChangeFilter }: Props) {
   return (
     <ul className="flex gap-10 justify-center p-4">
       {mapFilter.map((item, index) => (

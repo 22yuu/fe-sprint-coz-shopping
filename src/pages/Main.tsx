@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 import ItemList from '../components/ItemList';
 import itemCounts from '../constants/itemCounts';
 import { useBookmark } from '../context/BookmarkContext';
 import { useProductApi } from '../context/ProductContext';
-import { useOutletContext } from 'react-router-dom';
 
 export default function Main() {
   const [products, setProducts] = useState([]);
@@ -13,7 +13,9 @@ export default function Main() {
   const { filter } = useOutletContext();
 
   useEffect(() => {
-    productApi.getBy(itemCounts.defaultCount).then((res) => setProducts(res));
+    productApi
+      .getBy(itemCounts.defaultCount)
+      .then((res: any) => setProducts(res));
   }, []);
 
   return (
